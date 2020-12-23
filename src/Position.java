@@ -1,3 +1,6 @@
+/**
+ * Build position of coordinates on the matrix (row and column)
+ */
 public class Position {
     private final int row;
     private final int col;

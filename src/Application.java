@@ -4,8 +4,17 @@ public class Application {
 
     private static int n = 0;
     private static int m = 0;
+    /**
+     * Input from console.
+     */
     private static int[][] firstLayer;
+    /**
+     * Build by app.
+     */
     private static int[][] secondLayer;
+    /**
+     * Creates list of ids of bricks put on matrix, used to control ids when build second layer with brick's id.
+     */
     private static List<Integer> bricksIdList;
     private static final Scanner cin = new Scanner(System.in);
 
@@ -42,6 +51,12 @@ public class Application {
         }
     }
 
+    /**
+     * Shows if brick can be placed horizontal from position <code>row</code> & <code>col</code>.
+     * @param row row of matrix.
+     * @param col row of matrix.
+     * @return true or false.
+     */
     private static boolean isHorizontalValid(int row, int col) {
         return (col < m - 1) && (firstLayer[row][col] != firstLayer[row][col + 1]) && (secondLayer[row][col + 1] == 0) && (secondLayer[row][col] == 0);
     }
@@ -50,6 +65,11 @@ public class Application {
         return (row < n - 1) && (firstLayer[row][col] != firstLayer[row + 1][col]) && (secondLayer[row + 1][col] == 0) && (secondLayer[row][col] == 0);
     }
 
+    /**
+     * Puts bricks on second layer if is possible.
+     * @param row
+     * @return
+     */
     private static boolean isSolutionExists(int row) {
         for (int i = row; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -82,6 +102,10 @@ public class Application {
         return true;
     }
 
+    /**
+     * Prints matrix <code>board</code> on console.
+     * @param board
+     */
     private static void printMatrix(int[][] board) {
         for (int[] ints : board) {
             for (int anInt : ints) {
@@ -98,6 +122,9 @@ public class Application {
         }
     }
 
+    /**
+     * Builds matrix from console input.
+     */
     private static void inputMatrix() {
         for (int row = 0; row < n; row++) {
             for (int col = 0; col < m; col++) {
@@ -106,6 +133,13 @@ public class Application {
         }
     }
 
+
+    /**
+     * Creates a list of <code>Brick</code> got from matrix <code>board</code>,
+     * if brick's size is correct.
+     * @param board matrix of bricks.
+     * @return list of <code>Brick</code> if all bricks are correct, else <code>null</code>.
+     */
     private static List<Brick> getBricksFromMatrix(int[][] board) {
         List<Brick> brickList = new ArrayList<>();
         for (int row = 0; row < n; row++) {
@@ -161,6 +195,11 @@ public class Application {
         }
     }
 
+    /**
+     * Checks if input value is even and between 0 and 100.
+     * @param a
+     * @return
+     */
     private static boolean isInputValid(int a) {
         return (a > 0 && a <= 100) && a % 2 == 0;
     }
